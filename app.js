@@ -1,27 +1,31 @@
 var express = require('express');
 var path = require('path');
+var config = require('./server/config/database');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var expressValidator = require('express-validator');
 
 //Connect to db
-mongoose.connect('mongodb://localhost:27017/cmscart');
+mongoose.connect(config.database);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function(){
-	console.log('Connected to Mongodb');
+    console.log('Connected to Mongodb');
 });
+
 
 //Init app
 var app = express();
 
 // View engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './client/views'));
 app.set('view engine', 'ejs');
 
 // Set public folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 // Body Parser middleware
 //
@@ -35,7 +39,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true
-	//cookie: { secure: true }
+    //cookie: { secure: true }
 }));
 
 // Express Validator middleware
@@ -64,8 +68,8 @@ app.use(function (req, res, next) {
 });
 
 //Set routes
-var pages = require('./routes/pages.js');
-var adminPages = require('./routes/admin_pages.js');
+var pages = require("./server/controllers/pages");
+var adminPages = require("./server/controllers/admin_pages");
 
 app.use('/admin/pages',adminPages);
 app.use('/',pages);
@@ -73,5 +77,6 @@ app.use('/',pages);
 //Start the server
 var port = 3000;
 app.listen(port, function() {
-	console.log('Server started on port '+ port)
+    console.log('Server started on port '+ port)
 });
+
