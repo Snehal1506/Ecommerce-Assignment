@@ -1,0 +1,59 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Edit product</h2>
+<a href="/admin/products" class="btn btn-primary">Back to all products</a>
+<br><br>
+
+<form method="post" action="/admin/products/edit-product/<%= id %>" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Description</label>
+        <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Category</label>
+        <select name="category" class="form-control">
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Price</label>
+        <input type="text" class="form-control" name="price" value="<%= price %>" placeholder="Price">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Current Image</label>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Upload Image</label>
+        <input type="file" class="form-control" name="image" id="img">
+        <img src="#" id="imgPreview" alt="">
+    </div>
+    
+    <input type="hidden" name="pimage" value="<%= image %>">
+    <button class="btn btn-default">Submit</button>
+</form>
+
+<hr>
+<h3 class="page-header">Gallery</h3>
+
+<ul class="gallery">
+    
+</ul>
+
+<br><br>
+<form  method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+    <div class="fallback">
+        <input type="file" name="file" multiple>
+        <input type="submit" value="Upload">
+    </div>
+</form>
+
+<%- include('../_layouts/adminfooter') %>
