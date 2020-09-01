@@ -32,23 +32,23 @@ app.use(session({
 	//cookie: { secure: true }
 }));
 
-// Express Validator middleware
-app.use(expressValidator({
-    errorFormatter: function (param, msg, value) {
-        var namespace = param.split('.')
-                , root = namespace.shift()
-                , formParam = root;
+//Express Validator middleware
+// app.use(expressValidator({
+//     errorFormatter: function (param, msg, value) {
+//         var namespace = param.split('.')
+//                 , root = namespace.shift()
+//                 , formParam = root;
 
-        while (namespace.length) {
-            formParam += '[' + namespace.shift() + ']';
-        }
-        return {
-            param: formParam,
-            msg: msg,
-            value: value
-        };
-    }
-}));
+//         while (namespace.length) {
+//             formParam += '[' + namespace.shift() + ']';
+//         }
+//         return {
+//             param: formParam,
+//             msg: msg,
+//             value: value
+//         };
+//     }
+// }));
 
 // Express Messages middleware
 app.use(require('connect-flash')());
@@ -75,6 +75,13 @@ app.use(function (req, res, next) {
 
 // })
 
+
+
+//SET ROUTES
+
+var adminCategories = require('./controllers/admin_categories.js');
+
+app.use('/admin/categories',adminCategories);
 
 
 
