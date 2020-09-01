@@ -8,16 +8,7 @@ var resizeImg = require('resize-img');
  * GET product index
  */
  router.get('/', function (req, res) {
- 	var count;
-
-    //Product.count(function (err, c) {
-    //    count = c;
-    //});
-
-    res.render('admin/products', {
-            //products: products,
-            //count: count
-        });
+    res.render('admin/products');
 });
 
 /*
@@ -32,7 +23,6 @@ var resizeImg = require('resize-img');
     res.render('admin/add_product', {
         title: title,
         desc: desc,
-        //categories: categories,
         price: price
     });
 
@@ -53,17 +43,7 @@ router.post('/add-product', function (req, res) {
  * GET edit product
  */
 router.get('/edit-product/:id', function (req, res) {
-    res.render('admin/edit_product', {
-                           /* title: p.title,
-                            errors: errors,
-                            desc: p.desc,
-                            categories: categories,
-                            category: p.category.replace(/\s+/g, '-').toLowerCase(),
-                            price: parseFloat(p.price).toFixed(2),
-                            image: p.image,
-                            galleryImages: galleryImages,
-                            id: p._id*/
-    					});
+    res.render('admin/edit_product');
 });
 
 /*
