@@ -35,13 +35,13 @@ router.get('/add-product', function (req, res) {
 //POST add product
 router.post('/add-product', function (req, res) {
 
-   var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
+    var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
 
-   var title = req.body.title;
-   var slug = title.replace(/\s+/g, '-').toLowerCase();
-   var desc = req.body.desc;
-   var price = req.body.price;
-   var category = req.body.category;
+    var title = req.body.title;
+    var slug = title.replace(/\s+/g, '-').toLowerCase();
+    var desc = req.body.desc;
+    var price = req.body.price;
+    var category = req.body.category;
 
     Product.findOne({slug: slug}, function (err, product) {
         if (product) {
@@ -91,9 +91,10 @@ router.post('/add-product', function (req, res) {
                        return console.log(err);
                     });
                 }
-
+                console.log(req.files.image);
+               // res.json(product);
                 req.flash('success', 'Product added!');
-                res.redirect('/admin/products');
+              //  res.redirect('/admin/products');
             });
         }
     });
