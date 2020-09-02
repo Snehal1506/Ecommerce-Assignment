@@ -19,6 +19,9 @@ con.once('open', function(){
 //INIT APP
 var app = express();
 
+// Set public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Express fileUpload middleware
 app.use(fileUpload());
 
@@ -38,7 +41,7 @@ app.use(session({
 }));
 
 //Express Validator middleware
-/*app.use(expressValidator({
+app.use(expressValidator({
     customValidators: {
         isImage: function (value, filename) {
             var extension = (path.extname(filename)).toLowerCase();
@@ -56,7 +59,7 @@ app.use(session({
             }
         }
     }
-}));*/
+}));
 
 // Express Messages middleware
 app.use(require('connect-flash')());
