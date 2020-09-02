@@ -4,7 +4,7 @@
   "description": "Server package",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,10 +12,14 @@
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
-    "mongoose": "^5.10.2"
+    "fs-extra": "^9.0.1",
+    "mkdirp": "^1.0.4",
+    "mongoose": "^5.10.2",
+    "resize-img": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
