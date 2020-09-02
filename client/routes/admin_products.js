@@ -74,7 +74,7 @@ router.get('/delete-image/:image', function (req, res) {
 /*
  * GET delete product
  */
-router.get('/delete-product/:id', isAdmin, function (req, res) {
+router.get('/delete-product/:id', function (req, res) {
 	res.redirect('/admin/products');
 });
 
