@@ -15,7 +15,13 @@
     </thead>
     <tbody>
         
-        <%# here categories from database will be added %>
+        <% categories.forEach(function(cat){ %>
+        <tr>
+            <td><%= cat.title %></td>
+            <td><a href="/admin/categories/edit-category/<%= cat._id %>">Edit</a></td>
+            <td><a class="confirmDeletion" href="/admin/categories/delete-category/<%= cat._id %>">Delete</a></td>
+        </tr>
+        <% }); %>
 
     </tbody>
 </table>
