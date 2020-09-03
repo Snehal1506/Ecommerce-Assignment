@@ -2,17 +2,25 @@ var express = require('express');
 var router = express.Router();
 var axios = require('axios');
 
+var categories;
 
 /*
  * GET category index
  */
-axios.get('http://localhost:3000/admin/categories') 
+axios.get('http://localhost:3000/admin/categories')
     .then(res =>{
-        console.log(res.data);
+        categories = res.data;
+        console.log(categories);
     })
     .catch(err =>{
         console.log(err);
-    })
+    });
+
+router.get('/', function(req,res){
+    res.render('admin/categories', {
+            categories: categories
+        });
+});
 
 
 /*
